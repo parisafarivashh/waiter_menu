@@ -1,4 +1,8 @@
 from django.apps import AppConfig
+import logging
+
+
+logger = logging.getLogger('core')
 
 
 class CoreConfig(AppConfig):

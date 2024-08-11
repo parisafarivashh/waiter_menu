@@ -1,5 +1,5 @@
 """
-WSGI config for waiter_menue project.
+WSGI config for waiter project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'waiter_menue.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'waiter.settings')
 
 application = get_wsgi_application()
