@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.1/howto/deployment/asgi/
 
 import os
 
-from channels.auth import AuthMiddlewareStack
+import django
 from channels.routing import ProtocolTypeRouter, URLRouter
 from django.urls import path
 
@@ -18,11 +18,15 @@ from django.core.asgi import get_asgi_application
 from core.consumers import WaitingConsumer
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'waiter.settings')
-print('1'*99)
+django.setup()
+
+
+from waiter.middleware import JWTAuthMiddlewareStack
+
 
 application = ProtocolTypeRouter({
     "http": get_asgi_application(),  # Django's standard HTTP application
-    "websocket": AuthMiddlewareStack(
+    "websocket": JWTAuthMiddlewareStack(
         URLRouter([
             path('waiting', WaitingConsumer.as_asgi()),
         ])
