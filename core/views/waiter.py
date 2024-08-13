@@ -2,10 +2,9 @@ from django.shortcuts import get_object_or_404
 from rest_framework import generics
 from rest_framework.permissions import AllowAny, IsAuthenticated
 
-from .models.desk import Desk
-from .models.demand import Demand
-from .serializers import CallWaiterSerializer, WaiterTasksSerializer
-
+from ..models.desk import Desk
+from ..models.demand import Demand
+from ..serializers import CallWaiterSerializer, WaiterTasksSerializer
 
 
 class CallDeskWaiterView(generics.CreateAPIView):
