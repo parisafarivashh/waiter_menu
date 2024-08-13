@@ -25,6 +25,9 @@ class WaitingConsumer(AsyncJsonWebsocketConsumer):
     async def request_waiter(self, event):
         await self.send_json(f'{event["code"]} you have request')
 
+    async def request_done(self, event):
+        await self.send_json(f'{event["code"]} done by {event["done_by"]}')
+
     @database_sync_to_async
     def get_desks(self, user):
         from .models.desk import Desk
