@@ -2,7 +2,7 @@ from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
 from rest_framework import serializers
 
-from .models import Category
+from .models.category import Category
 from .models.item import Item
 from .models.demand import Demand
 
@@ -48,7 +48,6 @@ class MenuCreateSerializers(serializers.ModelSerializer):
     class Meta:
         model = Item
         fields = ['id', 'title', 'description', 'price', 'category']
-        depth = 1
 
 
 class CategorySerializer(serializers.ModelSerializer):
